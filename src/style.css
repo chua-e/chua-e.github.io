@@ -1,0 +1,12 @@
+:root {
+    --main-dark: #161712;
+    --main-light: #e9dfd3;
+
+    --font-mono: "DM Mono", monospace;
+}
+
+body {
+    background-color: var(--main-dark);
+    font-family: var(--font-mono);
+    color: var(--main-light);
+}
