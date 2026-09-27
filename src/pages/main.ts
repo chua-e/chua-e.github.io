@@ -1,3 +1,11 @@
+function all():void {
+    customCursor();
+
+    const clock = new Clock();
+    clock.start();
+
+}
+
 function customCursor():void {
     const cursor = document.getElementById('cursor') as HTMLDivElement | null;
 
@@ -26,4 +34,33 @@ function customCursor():void {
     }
 }
 
-customCursor();
+class Clock {
+    private element: HTMLElement;
+    private timerId: number | null = null;
+
+    constructor() {
+        const el = document.getElementById('digi-clock') as HTMLDivElement;
+        this.element = el;
+    }
+
+    public start(): void {
+        this.updateClock();
+        this.timerId = window.setInterval(() => this.updateClock(), 1000);
+    }
+
+    public stop(): void {
+        if (this.timerId !== null) {
+            clearInterval(this.timerId);
+            this.timerId = null;
+        }
+    }
+
+    private updateClock(): void {
+        const now = new Date();
+        this.element.textContent = now.toLocaleTimeString();
+    }
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+    all();
+});
