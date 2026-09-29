@@ -4,6 +4,8 @@ function all():void {
     const clock = new Clock();
     clock.start();
 
+    getDate();
+
 }
 
 function customCursor():void {
@@ -58,6 +60,23 @@ class Clock {
     private updateClock(): void {
         const now = new Date();
         this.element.textContent = now.toLocaleTimeString();
+    }
+}
+
+function getDate():void {
+    const dateDiv = document.getElementById('date-display') as HTMLDivElement | null;
+
+    if (dateDiv) {
+        const today: Date = new Date();
+
+        const options: Intl.DateTimeFormatOptions = { 
+            weekday: 'long', 
+            year: 'numeric', 
+            month: 'long', 
+            day: 'numeric' 
+        };
+
+        dateDiv.textContent = today.toLocaleDateString('en-US', options);
     }
 }
 

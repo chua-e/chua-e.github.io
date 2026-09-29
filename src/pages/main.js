@@ -3,6 +3,7 @@ function all() {
     customCursor();
     const clock = new Clock();
     clock.start();
+    getDate();
 }
 function customCursor() {
     const cursor = document.getElementById('cursor');
@@ -44,6 +45,19 @@ class Clock {
     updateClock() {
         const now = new Date();
         this.element.textContent = now.toLocaleTimeString();
+    }
+}
+function getDate() {
+    const dateDiv = document.getElementById('date-display');
+    if (dateDiv) {
+        const today = new Date();
+        const options = {
+            weekday: 'long',
+            year: 'numeric',
+            month: 'long',
+            day: 'numeric'
+        };
+        dateDiv.textContent = today.toLocaleDateString('en-US', options);
     }
 }
 document.addEventListener("DOMContentLoaded", () => {
