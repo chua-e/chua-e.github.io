@@ -63,6 +63,7 @@ function getDate() {
 }
 function initializePageNavigation() {
     const main = document.getElementById('page-content');
+    const pageNameElement = document.getElementById('page-name');
     const links = document.querySelectorAll('.sidebar a[data-page]');
     if (!main) {
         return;
@@ -74,10 +75,20 @@ function initializePageNavigation() {
         research: 'src/pages/research.html',
         fortune: 'src/pages/fortune.html'
     };
+    const pageTitles = {
+        about: 'ABOUT ME',
+        resume: 'RESUME',
+        projects: 'PROJECTS',
+        research: 'RESEARCH',
+        fortune: 'TRY YOUR FORTUNE'
+    };
     let requestId = 0;
     const showPage = async (pageName) => {
         const selectedPage = pageName === 'about' || pageFiles[pageName] ? pageName : 'about';
         const currentRequestId = ++requestId;
+        if (pageNameElement) {
+            pageNameElement.textContent = pageTitles[selectedPage];
+        }
         links.forEach((link) => {
             if (link.dataset.page === selectedPage) {
                 link.setAttribute('aria-current', 'page');

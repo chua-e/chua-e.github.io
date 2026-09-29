@@ -5,6 +5,8 @@
     --main-light: #e9dfd3;
     --darker-light: #e4ddcb;
 
+    --mid-tone: #807b72;
+
     --font-dm: "DM Mono", monospace;
     --font-jet: "JetBrains Mono", monospace;
 }
@@ -39,11 +41,6 @@ h2 {
     transform: translate3d(0, 0, 0);
     transition: transform 0.1s ease-out, background-color 0.2s ease;
     z-index: 100;
-}
-
-.cursor.hovering {
-    /* transform: scale(1.8); */
-    background: #fff;
 }
 
 .content-row {
@@ -144,13 +141,14 @@ footer {
 
 #heading {
     display: flex;
+    justify-content: space-between;
     position: sticky;
     top: 0;
     flex-shrink: 0;
     z-index: 1000;
     /* background-color: var(--darker-light); */
     padding: 1em;
-    outline: 1px solid var(--lighter-dark);
+    outline: 1px solid var(--mid-tone);
 }
 
 #date-time-wrap {
@@ -158,19 +156,26 @@ footer {
     gap: 1em;
 }
 
+#page-name {
+    font-family: var(--font-jet);
+}
+
 .pic-wrap {
-    max-width: 300px;
+    width: min(50em, 100%);
     height: auto;
 }
 
 .pic-wrap p{
     font-size: 0.7em;
+    font-style: italic;
 }
 
 #personal-pic {
-    max-width: 100%;
+    display: block;
+    width: 100%;
     height: auto;
-    outline: 1px solid var(--lighter-dark);
+    /* outline: 1px solid var(--lighter-dark); */
+    box-shadow: 2px 2px 1px 0px rgba(0, 0, 0, 0.144);
 }
 
 #name-big {
@@ -179,12 +184,12 @@ footer {
 }
 
 .contact {
-    color: var(--lighter-dark);
+    color: var(--main-dark);
     margin: 0%;
 }
 
 .contact svg {
-    color: var(--lighter-dark);
+    color: var(--main-dark);
     width: 1.2rem;
     height: 1.2rem;
     vertical-align: middle;
@@ -201,6 +206,9 @@ footer {
     align-items: center;
     justify-content: center;
     gap: 2em;
+    outline: 1px solid var(--mid-tone);
+    padding: 2em;
+    border-radius: 0.3em;
 }
 
 #details {
@@ -213,6 +221,26 @@ footer {
     gap: 0;
 }
 
+#bio a {
+    font-style: italic;
+    text-decoration: none;
+}
+
+#bio a:hover {
+    text-decoration: underline;
+}
+
 .section {
-    padding: 2.5em;
+    padding: 3em;
+    align-items: center;
+    justify-content: center;
+}
+
+#spawner {
+    position: sticky;
+    bottom: 0;
+    justify-content: center;
+    align-items: center;
+    outline: 1px solid var(--lighter-dark);
+    vertical-align: middle;
 }
