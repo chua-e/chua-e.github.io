@@ -1,8 +1,9 @@
 :root {
     --main-dark: #161712;
-    --main-light: #e9dfd3;
-
     --lighter-dark: #2a2b25;
+
+    --main-light: #e9dfd3;
+    --darker-light: #8d857c;
 
     --font-dm: "DM Mono", monospace;
     --font-jet: "JetBrains Mono", monospace;
@@ -69,11 +70,40 @@ h2 {
     flex-direction: column;
     background-color: var(--main-dark);
     color: var(--main-light);
+    padding: 1em;
+    gap: 0.5em;
+}
+
+.sidebar h1 {
+    color: var(--lighter-dark);
 }
 
 .sidebar a {
+    text-decoration: none;
     font-family: var(--font-jet);
+    color: var(--main-light);
+    /* outline: 1px solid var(--lighter-dark); */
+    padding: 0.5em;
+    border-radius: 0.3em;
+    vertical-align: middle;
 }  
+
+.sidebar a:hover {
+    background-color: var(--lighter-dark);
+    /* outline: 1px solid var(--lighter-dark); */
+    /* transition: transform 0.1s ease-out; */
+}
+
+.sidebar a[aria-current="page"] {
+    background-color: var(--main-light);
+    color: var(--main-light);
+    /* font-weight: 600; */
+}
+
+.sidebar svg {
+    width: 1.2rem;
+    height: 1.2rem;
+}
 
 footer {
     display: flex;
@@ -84,6 +114,7 @@ footer {
     justify-content: flex-end;
     outline: 1px solid var(--lighter-dark);
     font-weight: 100;
+    font-size: medium;
 }
 
 #date-time-wrap {
@@ -141,4 +172,14 @@ footer {
 
 #main-details {
     gap: 0;
+}
+
+.sidebar a[aria-current="page"] {
+    background-color: var(--lighter-dark);
+    border-left: 3px solid var(--main-light);
+}
+
+.sidebar a:focus-visible {
+    outline: 2px solid var(--main-light);
+    outline-offset: 2px;
 }

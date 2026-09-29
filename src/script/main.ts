@@ -1,5 +1,6 @@
 function all():void {
     customCursor();
+    initializePageNavigation();
 
     const clock = new Clock();
     clock.start();
@@ -78,6 +79,67 @@ function getDate():void {
 
         dateDiv.textContent = today.toLocaleDateString('en-US', options);
     }
+}
+
+function initializePageNavigation(): void {
+    const main = document.getElementById('page-content');
+    const links = document.querySelectorAll<HTMLAnchorElement>('.sidebar a[data-page]');
+
+    if (!main) {
+        return;
+    }
+
+    const aboutContent = main.innerHTML;
+    const pageFiles: Record<string, string> = {
+        resume: 'src/pages/resume.html',
+        projects: 'src/pages/projects.html',
+        research: 'src/pages/research.html',
+        fortune: 'src/pages/fortune.html'
+    };
+    let requestId = 0;
+
+    const showPage = async (pageName: string): Promise<void> => {
+        const selectedPage = pageName === 'about' || pageFiles[pageName] ? pageName : 'about';
+        const currentRequestId = ++requestId;
+
+        links.forEach((link) => {
+            if (link.dataset.page === selectedPage) {
+                link.setAttribute('aria-current', 'page');
+            } else {
+                link.removeAttribute('aria-current');
+            }
+        });
+
+        if (selectedPage === 'about') {
+            main.innerHTML = aboutContent;
+            return;
+        }
+
+        try {
+            const response = await fetch(pageFiles[selectedPage]);
+            if (!response.ok) {
+                throw new Error(`Page request failed: ${response.status}`);
+            }
+
+            const content = await response.text();
+            if (currentRequestId === requestId) {
+                main.innerHTML = content;
+            }
+        } catch {
+            if (currentRequestId === requestId) {
+                main.innerHTML = '<section><h2>Page unavailable</h2><p>This page could not be loaded.</p></section>';
+            }
+        }
+    };
+
+    window.addEventListener('hashchange', () => {
+        void showPage(window.location.hash.slice(1) || 'about');
+    });
+
+    if (!window.location.hash) {
+        window.history.replaceState(null, '', '#about');
+    }
+    void showPage(window.location.hash.slice(1));
 }
 
 document.addEventListener("DOMContentLoaded", () => {
