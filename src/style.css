@@ -25,6 +25,7 @@ h2 {
 .cursor {
     width: 10px;
     height: 10px;
+    mix-blend-mode: difference;
     background-color: var(--main-light);
     border-radius: 0%;
     position: fixed;
@@ -76,4 +77,9 @@ footer {
     color: var(--main-light);
     padding: 0.5em;
     justify-content: flex-end;
+}
+
+#personal-pic {
+    max-width: 20%;
+    height: auto;
 }
