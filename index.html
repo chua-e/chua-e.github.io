@@ -41,12 +41,24 @@
                 </svg>
                 RESEARCH
             </a>
-            <a href="#fortune" data-page="fortune">
-                TRY YOUR FORTUNE
-            </a>
+            <!-- <a href="#fortune" data-page="fortune">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-asterisk" viewBox="0 0 16 16">
+                    <path d="M8 0a1 1 0 0 1 1 1v5.268l4.562-2.634a1 1 0 1 1 1 1.732L10 8l4.562 2.634a1 1 0 1 1-1 1.732L9 9.732V15a1 1 0 1 1-2 0V9.732l-4.562 2.634a1 1 0 1 1-1-1.732L6 8 1.438 5.366a1 1 0 0 1 1-1.732L7 6.268V1a1 1 0 0 1 1-1"/>
+                </svg>
+                GAMBLE?
+            </a> -->
         </header>
 
-        <main class="main" id="page-content" aria-live="polite">
+        <main class="main">
+            <div id="heading">
+                <div id="date-time-wrap">
+                    <div id="date-display">Loading date...</div>
+                    <div> ● </div>
+                    <div id="digi-clock">Loading time...</div>
+                </div>
+            </div>
+
+            <div id="page-content" aria-live="polite">
             <section id="main" class="section">
                 <div id="about-me">
                     <div class="pic-wrap">
@@ -83,16 +95,17 @@
                     </div>
                 </div>
             </section>
+            </div>
         </main>
     </div>
 
-    <footer>
+    <!-- <footer>
         <div id="date-time-wrap">
             <div id="date-display">Loading date...</div>
             <div> ● </div>
             <div id="digi-clock">Loading time...</div>
         </div>
-    </footer>
+    </footer> -->
     <script type="module" src="src/script/main.js"></script>
 </body>
 </html>
