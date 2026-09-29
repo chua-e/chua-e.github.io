@@ -20,5 +20,8 @@
   "homepage": "https://github.com/chua-e/chuae#readme",
   "devDependencies": {
     "typescript": "^7.0.2"
+  },
+  "dependencies": {
+    "bootstrap-icons": "^1.13.1"
   }
 }
