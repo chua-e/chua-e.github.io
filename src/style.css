@@ -55,13 +55,31 @@ h2 {
     display: flex;
     flex-direction: column;
     min-height: 0;
-    overflow-y: auto;
+    overflow: hidden;
     background-color: var(--main-light);
     color: var(--main-dark);
     /* background-color: var(--main-dark);
     color: var(--main-light); */
     justify-content: flex-start;
     align-items: stretch;
+}
+
+#page-content {
+    overflow-y: auto;
+    scrollbar-color: var(--lighter-dark) var(--main-light);
+    scrollbar-width: thin;
+}
+
+#page-content::-webkit-scrollbar {
+    width: 0.5rem;
+}
+
+#page-content::-webkit-scrollbar-track {
+    background-color: var(--main-light);
+}
+
+#page-content::-webkit-scrollbar-thumb {
+    background-color: var(--mid-tone);
 }
 
 #page-content {
@@ -143,13 +161,11 @@ footer {
 #heading {
     display: flex;
     justify-content: space-between;
-    position: sticky;
-    top: 0;
     flex-shrink: 0;
-    z-index: 1000;
     /* background-color: var(--darker-light); */
     padding: 1em;
     outline: 1px solid var(--mid-tone);
+    background-color: var(--main-light);
 }
 
 #date-time-wrap {
@@ -213,6 +229,7 @@ footer {
     outline: 1px solid var(--mid-tone);
     padding: 2em;
     border-radius: 0.3em;
+    margin-top: 3em;
 }
 
 #details {
@@ -240,6 +257,29 @@ footer {
     justify-content: center;
 }
 
+#main {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+#contact-sec {
+    display: flex;
+    flex-direction: column;
+}
+
+#contact-box {
+    display: flex;
+    flex: 1;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    gap: 2em;
+    outline: 1px solid var(--mid-tone);
+    padding: 10em;
+    border-radius: 0.3em;
+}
+
 #spawner {
     position: sticky;
     bottom: 0;
@@ -255,6 +295,29 @@ footer {
     height: 80%;
     border-radius: 0.3em;
     outline: 1px solid var(--mid-tone);
+}
+
+.cat-wrap {
+    display: flex;
+    width: 100%;
+    height: auto;
+    justify-content: center;
+}
+
+#cat-prog-img {
+    display: block;
+    width: 50%;
+    height: auto;
+}
+
+#default-proj-view {
+    display: flex;
+    min-height: 100%;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1em;
+    text-align: center;
 }
 
 #proj-list {
@@ -294,7 +357,6 @@ footer {
 #proj-list .project-link:hover,
 #proj-list .project-link:focus-visible,
 #proj-list .project-link[aria-pressed="true"] {
-    font-weight: 600;
     color: var(--main-light);
     background-color: var(--main-dark);
 }

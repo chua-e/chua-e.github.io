@@ -77,7 +77,7 @@ function initializePageNavigation() {
     };
     const pageTitles = {
         about: 'ABOUT ME',
-        resume: 'RESUME',
+        resume: 'CURRICULUM VITAE',
         projects: 'PROJECTS',
         research: 'RESEARCH',
         fortune: 'TRY YOUR FORTUNE'

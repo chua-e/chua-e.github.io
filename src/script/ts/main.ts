@@ -102,7 +102,7 @@ function initializePageNavigation(): void {
     };
     const pageTitles: Record<string, string> = {
         about: 'ABOUT ME',
-        resume: 'RESUME',
+        resume: 'CURRICULUM VITAE',
         projects: 'PROJECTS',
         research: 'RESEARCH',
         fortune: 'TRY YOUR FORTUNE'
