@@ -1,4 +1,5 @@
 import { Project, projects } from "./projects.js";
+import { Paper, papers } from "./papers.js"
 
 function all():void {
     customCursor();
