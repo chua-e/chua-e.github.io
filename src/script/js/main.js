@@ -65,6 +65,8 @@ function initializePageNavigation() {
     const main = document.getElementById('page-content');
     const pageNameElement = document.getElementById('page-name');
     const links = document.querySelectorAll('.sidebar a[data-page]');
+    const resumeSubnav = document.querySelector('[data-subnav="resume"]');
+    const resumeSectionLinks = document.querySelectorAll('.sidebar-subnav a[data-section]');
     if (!main) {
         return;
     }
@@ -88,6 +90,9 @@ function initializePageNavigation() {
         const currentRequestId = ++requestId;
         if (pageNameElement) {
             pageNameElement.textContent = pageTitles[selectedPage];
+        }
+        if (resumeSubnav) {
+            resumeSubnav.hidden = selectedPage !== 'resume';
         }
         links.forEach((link) => {
             if (link.dataset.page === selectedPage) {
@@ -122,6 +127,13 @@ function initializePageNavigation() {
     };
     window.addEventListener('hashchange', () => {
         void showPage(window.location.hash.slice(1) || 'about');
+    });
+    resumeSectionLinks.forEach((link) => {
+        link.addEventListener('click', (event) => {
+            event.preventDefault();
+            const section = document.getElementById(link.dataset.section ?? '');
+            section?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        });
     });
     if (!window.location.hash) {
         window.history.replaceState(null, '', '#about');

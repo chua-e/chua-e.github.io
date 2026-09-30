@@ -88,6 +88,8 @@ function initializePageNavigation(): void {
     const main = document.getElementById('page-content');
     const pageNameElement = document.getElementById('page-name');
     const links = document.querySelectorAll<HTMLAnchorElement>('.sidebar a[data-page]');
+    const resumeSubnav = document.querySelector<HTMLElement>('[data-subnav="resume"]');
+    const resumeSectionLinks = document.querySelectorAll<HTMLAnchorElement>('.sidebar-subnav a[data-section]');
 
     if (!main) {
         return;
@@ -115,6 +117,9 @@ function initializePageNavigation(): void {
 
         if (pageNameElement) {
             pageNameElement.textContent = pageTitles[selectedPage];
+        }
+        if (resumeSubnav) {
+            resumeSubnav.hidden = selectedPage !== 'resume';
         }
 
         links.forEach((link) => {
@@ -152,6 +157,14 @@ function initializePageNavigation(): void {
 
     window.addEventListener('hashchange', () => {
         void showPage(window.location.hash.slice(1) || 'about');
+    });
+
+    resumeSectionLinks.forEach((link) => {
+        link.addEventListener('click', (event: MouseEvent) => {
+            event.preventDefault();
+            const section = document.getElementById(link.dataset.section ?? '');
+            section?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        });
     });
 
     if (!window.location.hash) {
