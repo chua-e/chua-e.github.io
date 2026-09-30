@@ -3,7 +3,7 @@
     --lighter-dark: #2a2b25;
 
     --main-light: #e9dfd3;
-    --darker-light: #e4ddcb;
+    --darker-light: #c7bfb4;
 
     --mid-tone: #807b72;
 
@@ -259,8 +259,9 @@ footer {
 
 #proj-list {
     display: flex;
-    width: 40%;
-    height: auto;
+    width: 30%;
+    height: 100%;
+    min-height: 0;
     /* padding: 2em; */
     border-radius: 0.3em 0em 0em 0.3em;
     outline: 1px solid var(--mid-tone);
@@ -270,21 +271,34 @@ footer {
     display: block;
     width: 100%;
     padding: 0.7em;
-    outline: 1px solid var(--mid-tone);
+    /* outline: 1px solid var(--mid-tone); */
+    text-decoration: none;
+    color: var(--main-dark);
 }
 
 #proj-list a:hover {
-    background-color: var(--mid-tone);
-}
-
-#proj-scroll {
-    width: 5%;
-    height: 100%;
-    background-color: var(--main-light);
+    color: var(--main-light);
+    background-color: var(--main-dark);
 }
 
 #proj-row-list {
     width: 100%;
+    min-height: 0;
+    overflow-y: auto;
+    scrollbar-color: var(--lighter-dark) var(--main-light);
+    scrollbar-width: thin;
+}
+
+#proj-row-list::-webkit-scrollbar {
+    width: 0.5rem;
+}
+
+#proj-row-list::-webkit-scrollbar-track {
+    background-color: var(--main-light);
+}
+
+#proj-row-list::-webkit-scrollbar-thumb {
+    background-color: var(--mid-tone);
 }
 
 #proj-view {

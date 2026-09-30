@@ -166,7 +166,7 @@ function showProjectList(): void {
         list.replaceChildren(
             ...projects.map((project) => {
                 const link = document.createElement("a");
-                link.href = project.link || '#';
+                // link.href = project.link || '#';
                 link.textContent = project.name;
                 return link;
             })
