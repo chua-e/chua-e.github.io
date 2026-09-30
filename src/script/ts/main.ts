@@ -1,4 +1,4 @@
-import { projects } from "./projects.js";
+import { Project, projects } from "./projects.js";
 
 function all():void {
     customCursor();
@@ -161,17 +161,71 @@ function initializePageNavigation(): void {
 
 function showProjectList(): void {
     const list = document.querySelector<HTMLDivElement>("#proj-row-list");
-    
-    if(list) {
-        list.replaceChildren(
-            ...projects.map((project) => {
-                const link = document.createElement("a");
-                // link.href = project.link || '#';
-                link.textContent = project.name;
-                return link;
-            })
-        );
+    const preview = document.querySelector<HTMLDivElement>("#proj-view");
+
+    if (!list || !preview) {
+        return;
     }
+
+    const projectButtons = projects.map((project) => {
+        const button = document.createElement("button");
+        button.type = "button";
+        button.className = "project-link";
+        button.textContent = project.name;
+
+        const caret = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+        caret.setAttribute("viewBox", "0 0 16 16");
+        caret.setAttribute("width", "16");
+        caret.setAttribute("height", "16");
+        caret.setAttribute("fill", "currentColor");
+        caret.setAttribute("class", "project-caret");
+        caret.setAttribute("aria-hidden", "true");
+
+        const caretPath = document.createElementNS("http://www.w3.org/2000/svg", "path");
+        caretPath.setAttribute("d", "m12.14 8.753-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1 1 0 0 1 1.659-.753l5.48 4.796a1 1 0 0 1 0 1.506z");
+        caret.append(caretPath);
+        button.prepend(caret);
+
+        button.setAttribute("aria-pressed", "false");
+        button.addEventListener("click", () => {
+            list.querySelectorAll<HTMLButtonElement>(".project-link").forEach((item) => {
+                item.setAttribute("aria-pressed", String(item === button));
+            });
+            showProjectDetails(project, preview);
+        });
+        return button;
+    });
+
+    list.replaceChildren(...projectButtons);
+}
+
+function showProjectDetails(project: typeof projects[number], preview: HTMLDivElement): void {
+    const heading = document.createElement("h2");
+    heading.textContent = project.name;
+
+    const description = document.createElement("p");
+    description.textContent = project.description;
+
+    const tags = document.createElement("p");
+    tags.className = "project-tags";
+    tags.textContent = project.tags.join(" | ");
+
+    const details: HTMLElement[] = [heading, description];
+    if (project.tags.length > 0) {
+        details.push(tags);
+    }
+
+    if (project.link) {
+        const link = document.createElement("a");
+        link.className = "project-github";
+        link.href = project.link;
+        link.target = "_blank";
+        link.rel = "noopener noreferrer";
+        link.textContent = "GitHub";
+        details.push(link);
+    }
+
+    preview.replaceChildren(...details);
 }
 
 document.addEventListener("DOMContentLoaded", () => {

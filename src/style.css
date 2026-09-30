@@ -267,18 +267,47 @@ footer {
     outline: 1px solid var(--mid-tone);
 }
 
-#proj-list a {
+#proj-list .project-link {
+    position: relative;
     display: block;
     width: 100%;
-    padding: 0.7em;
-    /* outline: 1px solid var(--mid-tone); */
-    text-decoration: none;
+    padding: 0.7em 0.7em 0.7em 2.2em;
+    border: 0;
+    border-bottom: 1px solid var(--lighter-dark);
+    text-align: left;
+    font: inherit;
+    background-color: var(--main-light);
     color: var(--main-dark);
 }
 
-#proj-list a:hover {
+#proj-list .project-caret {
+    position: absolute;
+    top: 50%;
+    left: 0.65em;
+    width: 1em;
+    height: 1em;
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(-50%);
+}
+
+#proj-list .project-link:hover,
+#proj-list .project-link:focus-visible,
+#proj-list .project-link[aria-pressed="true"] {
+    font-weight: 600;
     color: var(--main-light);
     background-color: var(--main-dark);
+}
+
+#proj-list .project-link:hover .project-caret,
+#proj-list .project-link:focus-visible .project-caret,
+#proj-list .project-link[aria-pressed="true"] .project-caret {
+    opacity: 1;
+}
+
+#proj-list .project-link:focus-visible {
+    outline: 2px solid var(--mid-tone);
+    outline-offset: -2px;
 }
 
 #proj-row-list {
@@ -302,5 +331,28 @@ footer {
 }
 
 #proj-view {
+    flex: 1;
+    min-width: 0;
     padding: 2em;
+}
+
+#proj-view h2 {
+    margin-top: 0;
+}
+
+#proj-view .project-tags {
+    color: var(--mid-tone);
+    font-size: 0.9em;
+}
+
+#proj-view .project-github {
+    background-color: var(--main-dark);
+    color: var(--main-light);
+    padding: 0.3em 0.5em;
+    border-radius: 0.3em;
+    text-decoration: none;
+}
+
+#proj-view .project-github:hover {
+    background-color: var(--lighter-dark);
 }
