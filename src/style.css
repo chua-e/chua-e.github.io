@@ -391,7 +391,6 @@ footer {
     transform: translateY(-50%);
 }
 
-#proj-list .project-link:hover,
 #proj-list .project-link:focus-visible,
 #proj-list .project-link[aria-pressed="true"] {
     color: var(--main-light);
