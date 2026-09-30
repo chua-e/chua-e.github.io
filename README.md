@@ -1,3 +1,3 @@
 # website
 
-idk what else to put here, repo just looks empty lol
+currently not responsive towards different viewports (sorry), website is a WIP (sorry again)
