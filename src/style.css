@@ -193,7 +193,7 @@ footer {
     justify-content: space-between;
     flex-shrink: 0;
     /* background-color: var(--darker-light); */
-    padding: 1em;
+    padding: 1em 2.5em;
     outline: 1px solid var(--mid-tone);
     background-color: var(--main-light);
     z-index: 100;
