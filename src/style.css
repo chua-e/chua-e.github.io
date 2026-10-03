@@ -454,3 +454,18 @@ footer {
 #proj-view .project-github:hover {
     background-color: var(--lighter-dark);
 }
+
+.list-type-shi {
+    display: flex;
+    flex-direction: column;
+    padding: 1.5em;
+    gap: 1em;
+}
+
+#job-box {
+    color: var(--main-dark);
+}
+
+#job-box span {
+    color: var(--mid-tone);
+}
