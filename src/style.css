@@ -207,10 +207,12 @@ footer {
 #page-name {
     font-size: large;
     font-family: var(--font-jet);
+    font-weight: 600;
 }
 
 .pic-wrap {
-    width: min(70em, 100%);
+    display: flex;
+    width: min(100em, 100%);
     height: auto;
     align-items: center;
     justify-content: center;
@@ -224,9 +226,10 @@ footer {
 #personal-pic {
     display: block;
     width: 100%;
-    height: auto;
-    /* outline: 1px solid var(--lighter-dark); */
-    box-shadow: 2px 2px 1px 0px rgba(0, 0, 0, 0.144);
+    height: 100%;
+    object-fit: contain;
+    outline: 1px solid var(--mid-tone);
+    /* box-shadow: 2px 2px 1px 0px rgba(0, 0, 0, 0.144); */
 }
 
 #name-big {
@@ -334,14 +337,14 @@ footer {
     outline: 1px solid var(--mid-tone);
 }
 
-.cat-wrap {
+.dog-wrap {
     display: flex;
     width: 100%;
     height: auto;
     justify-content: center;
 }
 
-#cat-prog-img {
+#dog-prog-img {
     display: block;
     width: 50%;
     height: auto;
